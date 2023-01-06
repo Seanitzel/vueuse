@@ -12,21 +12,13 @@ Fires when users start typing on non-editable elements.
 <input ref="input" type="text" placeholder="Start typing to focus" />
 ```
 
-```ts {7-10}
-import { onStartTyping } from '@vueuse/core'
+```ts {4-7}
+<script setup lang="ts">
+const input = ref(null)
 
-export default {
-  setup() {
-    const input = ref(null)
-
-    onStartTyping(() => {
-      if (!input.value.active)
-        input.value.focus()
-    })
-
-    return {
-      input,
-    }
-  },
-}
+onStartTyping(() => {
+  if (!input.value.active)
+    input.value.focus()
+})
+</script>
 ```
